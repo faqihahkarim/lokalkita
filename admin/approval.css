@@ -1,0 +1,208 @@
+/* CONTAINER */
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* CARDS */
+.exp-card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    animation: fadeIn 0.5s ease;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.exp-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* IMAGE */
+.exp-thumb img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* INFO */
+.exp-info {
+    padding: 15px 18px;
+}
+
+.exp-desc {
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+.exp-meta {
+    margin-top: 6px;
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    opacity: 0.75;
+}
+
+.price-tag {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ff7a00;
+}
+
+/* BADGES */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.status-badge.pending { background: #fff3cd; color: #856404; }
+.status-badge.approved { background: #d4edda; color: #155724; }
+.status-badge.rejected { background: #f8d7da; color: #721c24; }
+
+/* BUTTON */
+.view-btn {
+    display: block;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: #ff7a00;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.view-btn:hover {
+    background: #dd6a00;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* FILTER BAR */
+.filter-bar {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.filter-bar input, .filter-bar select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.filter-btn {
+    background: #ff7a00;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+}
+/* Collapsed Sidebar */
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar.collapsed .nav-links span,
+.sidebar.collapsed .logo {
+  display: none;
+}
+
+.pagination {
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.page-number,
+.page-btn {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #fff;
+    text-decoration: none;
+    color: #444;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.page-number:hover,
+.page-btn:hover {
+    background: #ffe5cc;
+    border-color: #ff7a00;
+}
+
+.page-number.active {
+    background: #ff7a00;
+    color: white;
+    border-color: #ff7a00;
+    font-weight: bold;
+}
+
+/* GRID LAYOUT FOR APPROVAL CARDS */
+.approval-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 25px;
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* Each card */
+.approval-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: .2s ease;
+}
+
+.approval-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Thumbnail */
+.approval-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* Pagination */
+.pagination {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 14px;
+    margin: 0 4px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    color: #ff661f;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background: #ff661f;
+    color: #fff;
+}
+
+.pagination a:hover {
+    background: #ffd1b3;
+}

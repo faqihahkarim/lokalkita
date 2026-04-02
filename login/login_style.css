@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+}
+
+/* Header Styling */
+.header {
+    background-color: #fdf8f9; /* Light pink */
+    padding: 10px 20px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fefaff;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 15px;
+    background: #c8b1ff;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+nav ul li a:hover {
+    color: #ff69b4; /* Pink */
+    background: #f8f7fa;
+}
+
+
+
+/* Benefits Section */
+.benefits {
+    background-image: url('home2.png'); /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the entire container */
+    background-color: rgba(195, 216, 232, 0.5); /* Adjust the transparency */
+    background-position: center;
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    padding: 40px 20px;
+    text-align: center;
+    color: white;
+    height:100vh;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .benefits {
+        padding: 20px 10px; /* Adjust padding for smaller screens */
+    }
+
+    .benefits h2 {
+        font-size: 2rem; /* Adjust font size for smaller screens */
+    }
+}
+
+
+.benefits h2 {
+    font-size: 2.5rem;
+    color: #fbff15; /* Bright yellow */
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgb(55, 55, 52);
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 280px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.green{
+    background: rgb(207, 244, 195);
+}
+
+.pink{
+    background: rgb(244, 195, 220);
+}
+
+.blue{
+    background: rgb(195, 211, 244);
+}
+
+
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid;
+    margin-top: -150px;
+}
+
+.green {
+    border-color: #4caf50; /* Green border */
+}
+
+.pink {
+    border-color: #e91e63; /* Pink border */
+}
+
+.blue {
+    border-color: #2196f3; /* Blue border */
+}
+
+
+
+/* Footer Section */
+footer {
+    background-color: #ffb6c1;
+    padding: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.cta h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #ff69b4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff1493;
+}
+
+.contact {
+    margin-top: 15px;
+}
+
+.contact p {
+    font-size: 1em;
+}
+
+.contact span {
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .opening {
+        font-size: 1.8em;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .benefits h2 {
+        font-size: 2rem;
+    }
+
+    .cards {
+        gap: 10px;
+    }
+
+    .card {
+        width: 200px;
+        height: 300px;
+    }
+
+    nav ul {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    nav ul li a {
+        width: auto;
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .benefits h2 {
+        font-size: 1.8rem;
+    }
+
+    .card {
+        width: 150px;
+        height: 250px;
+    }
+
+    nav ul li a {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
+    .cta h3 {
+        font-size: 1.2em;
+    }
+}

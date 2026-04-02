@@ -1,0 +1,487 @@
+/* =========================================================
+   GLOBAL STYLE — Modern Glass + Smooth Animations
+========================================================= */
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f4f9e9, #e8f0d9);
+  color: #333;
+  overflow-x: hidden;
+  animation: fadeIn 0.8s ease;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   HEADER — Fully Glass, Floating, Premium
+========================================================= */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 60px;
+
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+
+  height: 60px;
+  animation: glassSlide 0.6s ease;
+}
+
+/* Header Slide-in Animation */
+@keyframes glassSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header .logo img {
+  width: 40px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+header nav a {
+  text-decoration: none;
+  color: #043873;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+header nav a:hover {
+  color: #ff62b0;
+}
+
+/* =========================================================
+   MAIN GLASS CONTAINER — Premium Card
+========================================================= */
+
+.profile-edit-container {
+  width: 70%;
+  margin: 100px auto;
+  padding: 40px;
+
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+
+  animation: floatUp 0.8s ease;
+}
+
+/* Container float animation */
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h3 {
+  color: #043873;
+  font-size: 2em;
+  margin-bottom: 40px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  margin-bottom: 35px;
+}
+
+/* =========================================================
+   INPUTS — Glass Inputs + Glow Focus
+========================================================= */
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2c2c2c;
+  margin-top: 15px;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(180, 180, 180, 0.35);
+
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
+  font-size: 1em;
+
+  transition: 0.25s ease;
+}
+
+.input-group input:hover,
+.input-group select:hover {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: #ff62b0;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 12px rgba(255, 98, 176, 0.35);
+}
+
+/* =========================================================
+   BUTTONS — Elevated, Glowing, Smooth
+========================================================= */
+
+button {
+  padding: 8px 22px;
+  background-color: #f7e581;
+
+  color: #2e2e2c;
+  border: none;
+  border-radius: 12px;
+
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  box-shadow: 0 8px 20px rgba(247, 229, 129, 0.35);
+}
+
+button:hover {
+  background-color: #f2d96a;
+  transform: translateY(-2px);
+}
+
+button[type="button"] {
+  background-color: #ff62b0;
+  box-shadow: 0 8px 20px rgba(255, 98, 176, 0.35);
+}
+
+button[type="button"]:hover {
+  background-color: #ff47a2;
+}
+
+/* =========================================================
+   TAG BUTTONS — Modern Toggles
+========================================================= */
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.tag {
+  padding: 10px 18px;
+  border-radius: 25px;
+
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(130, 130, 130, 0.3);
+
+  backdrop-filter: blur(10px);
+
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: 0.2s ease;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.tag:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
+}
+
+.tag input {
+  display: none;
+}
+
+.tag:has(input:checked) {
+  background: #2b6cb0;
+  color: white;
+  border-color: #2b6cb0;
+  box-shadow: 0 4px 12px rgba(43, 108, 176, 0.35);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+  .profile-edit-container {
+    width: 90%;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 15px 25px;
+  }
+  h3 {
+    font-size: 1.6rem;
+  }
+}
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.progress-wrapper {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-wrapper p {
+  margin: 0;
+  font-weight: 600;
+  color: #043873;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff62b0, #f7e581);
+  width: 0%;
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+#progressPercent {
+  font-weight: 600;
+  color: #2e2e2c;
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   CIRCULAR PROFILE PICTURE
+========================================================= */
+
+.profile-pic-container {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.profile-pic-container img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.upload-btn {
+  display: inline-block;
+  margin-top: 12px;
+  background-color: #ff62b0;
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  transition: 0.2s ease;
+  margin-left: 12px;
+}
+
+.upload-btn:hover {
+  background-color: #ff47a2;
+}
+
+.upload-btn input {
+  display: none;
+}
+
+/* =========================================================
+   TAG POP ANIMATION + MOBILE WRAP FIX
+========================================================= */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.tag.pop {
+  transform: scale(1.1);
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Mobile-friendly tag layout */
+@media (max-width: 600px) {
+  .tag {
+    flex: 1 1 45%;
+    justify-content: center;
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* =========================================================
+   LOADING OVERLAY
+========================================================= */
+#loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(255, 255, 255, 0.6);
+  border-top: 6px solid #ff62b0;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#loadingOverlay p {
+  margin-top: 15px;
+  color: #043873;
+  font-weight: 600;
+}
+
+/* =========================================================
+   SUCCESS POPUP
+========================================================= */
+#successPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+
+  background: rgba(0, 0, 0, 0.35);
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 10000;
+}
+
+.popup-content {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  width: 300px;
+
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  animation: popupFade 0.4s ease;
+}
+
+@keyframes popupFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popup-content h3 {
+  margin: 0 0 10px 0;
+  color: #043873;
+}
+
+.popup-content p {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#popupOkBtn {
+  width: 100%;
+  padding: 12px;
+  background: #ff62b0;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+#popupOkBtn:hover {
+  background: #ff47a2;
+}

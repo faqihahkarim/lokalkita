@@ -1,0 +1,333 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  color: #333;
+  background: #f9f9f9;
+}
+
+/* ⭐ PAGE WRAPPER (indent fix) */
+.profile-container {
+  padding: 40px 6%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+header {
+  position: sticky;         /* stays at top if scroll */
+  top: 0;
+  background: rgba(255, 255, 255, 0.35);   /* translucent */
+  backdrop-filter: blur(10px) saturate(180%); /* glass blur effect */
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-radius: 14px;
+  margin-bottom: 35px;
+  margin-top: -50px;
+  z-index: 999; /* always on top */
+}
+
+
+.logo {
+  font-weight: 800;
+  font-size: 1.6rem;
+}
+
+nav {
+  display: flex;
+}
+
+nav ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+nav ul li a {
+  color: #222;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: 0.2s;
+}
+
+nav ul li a:hover {
+  color: #ff661f;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.9rem;
+  cursor: pointer;
+  color: #222;
+}
+
+
+
+/* =========================
+   PROFILE HEADER
+========================= */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.profile-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #585a5c;
+}
+
+.business-name {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #111;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 0 #d8d4b5, 6px 6px 0 #d6d3a6, 9px 9px 0 #ebebc0;
+}
+
+.location {
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.location i {
+  color: red;
+}
+
+/* =========================
+   MAIN GRID
+========================= */
+.main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.about-box,
+.focus-box {
+  background: #ffffffd9;
+  padding: 25px;
+  border-radius: 18px;
+  border: 1px solid #ddd;
+  backdrop-filter: blur(3px);
+}
+
+.focus-box h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   CONTACT BOX
+========================= */
+.contact-box {
+  background: #ffffffde;
+  padding: 25px;
+  border-radius: 18px;
+  border: 1px solid #ccc;
+  margin-bottom: 40px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.contact-row i {
+  color: #ff661f;
+}
+
+/* =========================
+   EXPERIENCE CARDS
+========================= */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: flex-start;   /* prevents full stretching */
+}
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+
+.card {
+  background: white;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 123, 255, 0.25);
+  transition: .25s;
+  position: relative;
+  width: 260px;       /* fixed card width */
+  flex: 0 0 auto;     /* prevents stretching */
+}
+
+.card-link {
+    text-decoration: none !important;
+    color: inherit;
+    display: block;
+}
+
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 35px rgba(0, 123, 255, 0.45);
+}
+
+.card-media {
+  position: relative;
+}
+
+.card-media img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.65);
+  color: white;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.content {
+  padding: 15px;
+}
+
+.card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.meta {
+  color: #555;
+  margin-bottom: 8px;
+  text-decoration: none !important;
+}
+
+.rating {
+  color: #ffc107;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none !important;
+}
+
+.card-actions {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.btn-like,
+.btn-save {
+  border: none;
+  background: white;
+  padding: 8px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.btn-like.active {
+  background: #ffe3ea;
+  color: #d90429;
+}
+
+.btn-save.active {
+  background: #fff7d3;
+  color: #a16900;
+}
+
+@media (max-width: 768px) {
+
+  /* Show burger */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Hide desktop nav */
+  nav {
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 70px;
+    width: 180px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 12px 0;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    flex-direction: column;
+    backdrop-filter: blur(12px);
+  }
+
+  /* When activated */
+  nav.active {
+    display: flex;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 0;
+    width: 100%;
+  }
+
+  nav ul li a {
+    padding: 10px 18px;
+    width: 100%;
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    justify-content: center;
+  }
+
+  .card {
+    width: 90%;   /* full but still a card shape */
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}

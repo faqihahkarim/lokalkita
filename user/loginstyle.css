@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    background-color: #ffc0cb; 
+    background-image: url('home1.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    margin: 0;
+    position:relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(226, 185, 203, 0.5); /* overlay transperancy */
+    z-index: -1; /* layer, behind others */
+}
+
+
+
+/* Header Styling */
+.header {
+    width: 100%; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff; 
+    z-index: 10; 
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    width: 100%;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #c8b1ff;
+}
+
+nav ul li a:hover {
+    color: #ff69b4;
+    background: #f8f7fa;
+}
+
+/* Main Content Styling */
+main {
+    margin-top: 80px; /*avoid header overlap*/
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Login Form */
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    max-width: 900px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.left, .right {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left {
+    background-image: url('home1.png');
+    background-color: rgba(246, 246, 232, 0.559); /* Yellow overlay */
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.left h1 {
+    color: #ac1a44;
+    margin-bottom: 20px;
+    font-size: 35px;
+    
+    
+}
+
+.left button {
+    padding: 10px 20px;
+    background-color: #b7e2f3;
+    color: #0d2fa9;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 150px;
+    margin: 0 auto;
+    border: 2px solid #f1a9bf;
+}
+
+.left button:hover {
+    background-color: #fdfdc1;;
+}
+
+.right {
+    background-color: #ffe4e1;
+    display: flex; 
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
+    justify-content: center;
+}
+
+.right h1 {
+    color: #fb7347;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 30px;
+    overflow: hidden; /* Ensures text is clipped during animation */
+    white-space: nowrap; /* Prevents the text from wrapping */
+    border-right: 3px solid #fb7347; /* Simulates a cursor */
+    width: 0; /* Start with no width */
+    animation: typewriter 4s steps(30, end) forwards, blink 0.5s step-end infinite;
+}
+
+/* Typewriter animation */
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%; /* full text lepas animate */
+    }
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+    from {
+        border-color: transparent;
+    }
+    to {
+        border-color: #fb7347;
+    }
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #f6efef;
+}
+
+.form-group input {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid #f5eeee;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #004aad;
+    margin-bottom:15px;
+}
+
+.right button {
+    padding: 10px 20px;
+    background-color: #ffe4e1;
+    border: 2px solid #004aad;
+    color: rgb(225, 126, 167);
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 150px;
+    margin: 20px 0; 
+    margin-left:50px;
+   
+}
+
+.right button:hover {
+    background-color: #f8a8d2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: row;
+        gap: 10px;
+        
+    }
+
+    nav ul li a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .container {
+        flex-direction: column;
+        width: 90%;
+        margin-top:30px;
+    }
+
+    .left, .right {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .left h1, .right h1 {
+        font-size: 1.5em;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}

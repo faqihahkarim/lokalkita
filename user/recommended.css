@@ -1,0 +1,244 @@
+/* =========================
+   BACKGROUND WITH FULL COVERAGE
+========================= */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #0a2540;
+  position: relative;
+  overflow-x: hidden;
+  height: 100vh;  /* Make sure body height is 100% */
+  display: flex;
+  flex-direction: column;
+}
+
+/* White transparent layer */
+body::before {
+  content: '';
+  position: fixed; /* Fixed to cover entire viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Full height */
+  background: rgba(255, 255, 255, 0.195); /* 60% opacity white */
+  z-index: -1;  /* Ensures it's behind content */
+}
+
+/* Background Image */
+.bg-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;  /* Ensure it covers the whole screen */
+  z-index: -2;   /* Behind overlay */
+}
+
+.bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;  /* Optional: reduces brightness */
+}
+
+
+
+/* =========================
+   NAVBAR (Dashboard Style)
+========================= */
+.navbar {
+   position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 70px;
+  background: linear-gradient(135deg, #ffffff 0%, #faf9e0 100%); /* soft white-yellow gradient */
+  border-bottom: 2px solid #f1f1f1;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+    height: 30px;    
+
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.2em;
+  color: #043873;
+}
+
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #043873;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #00b894;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.recommend-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  padding: 80px 80px 60px;
+}
+
+.left-col h3,
+.right-col h3 {
+  color: #043873;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   RECOMMENDED CARDS
+========================= */
+.recommend-card {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.743);
+  border-radius: 20px;
+  padding: 15px 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.recommend-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.recommend-card img {
+  width: 130px;
+  height: 90px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.recommend-info h4 {
+  margin: 0;
+  color: #043873;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.recommend-info p {
+  margin: 3px 0;
+  font-size: 0.95em;
+  color: #333;
+}
+
+.recommend-info span {
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.duration {
+  color: #666;
+  font-size: 0.85em;
+}
+
+/* =========================
+   EXPLORE MORE
+========================= */
+.right-col {
+  background: rgba(255,255,255,0.8);
+  border-radius: 20px;
+  padding: 20px 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  height: fit-content;
+}
+
+.explore-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.7);
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.explore-card:hover {
+  transform: scale(1.02);
+}
+
+.explore-card img {
+  width: 100px;
+  height: 60px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.explore-bar {
+  width: 60px;
+  height: 8px;
+  background: #043873;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .recommend-container {
+    grid-template-columns: 1fr;
+    padding: 100px 30px 60px;
+  }
+
+  .right-col {
+    order: -1;
+  }
+}
+@media (max-width: 480px) {
+  .recommend-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .recommend-card img {
+    margin-bottom: 10px;
+  }
+
+  .explore-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .explore-bar {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+}

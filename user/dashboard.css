@@ -1,0 +1,784 @@
+/* =========================================================
+   GLOBAL CLEANED + FIXED
+========================================================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: #222;
+
+  /* Soft background */
+  background: linear-gradient(
+      135deg,
+      rgba(249, 250, 251, 0.92) 0%,
+      rgba(246, 250, 224, 0.92) 100%
+    ),
+    url("../pic/p1.png");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* =========================================================
+   NAVBAR (Glass)
+========================================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+
+  /* IMPORTANT FIX */
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 60px;
+
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+
+  z-index: 9999999 !important;
+  pointer-events: auto !important;
+}
+
+.logo span {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: #ff960c;
+}
+
+.profile-icon i {
+  font-size: 1.8rem;
+  color: #333;
+  transition: 0.2s ease;
+}
+
+.profile-icon i:hover {
+  color: #ff5f7a;
+  transform: scale(1.05);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+}
+
+/* =========================================================
+   DASHBOARD MAIN WRAPPER — FIXED
+========================================================= */
+.dashboard-wrapper {
+  width: 95%;
+  max-width: 1500px;
+  margin: 60px auto 60px;
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* =========================================================
+   PROFILE SUMMARY — FIXED POSITION + GLASS
+========================================================= */
+.profile-summary {
+  border-radius: 24px;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.profile-summary-main {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.profile-avatar img {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-summary-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-username {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #043873;
+}
+
+.profile-bio {
+  margin: 0;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.profile-meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #f2efff;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* =========================================================
+   RECOMMENDED GRID 
+========================================================= */
+.recommend-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 18px;
+    padding-bottom: 10px;
+
+    scrollbar-width: thin;         /* Firefox */
+    scrollbar-color: #ccc transparent;
+}
+
+.recommend-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.recommend-grid::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.recommend-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.experience-card {
+    min-width: 260px;  /* Card width */
+    flex: 0 0 auto;    /* Prevent shrinking */
+    scroll-snap-align: start;
+}
+
+
+.experience-card {
+  width: 100%;
+  max-width: 240px;
+}
+
+/* Card container */
+.experience-card {
+  background: #ffffff;
+  border-radius: 22px;
+
+  padding-bottom: 15px;
+  box-shadow: 0 10px 25px rgba(80, 140, 255, 0.18);
+  transition: 0.2s ease;
+  position: relative; /* IMPORTANT */
+  overflow: visible !important; /* FIX CROPPING ISSUE */
+}
+
+.experience-card h4,
+.experience-card h4 a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.experience-location,
+.experience-location a {
+    text-decoration: none !important;
+}
+
+.experience-card,
+.experience-card a {
+    text-decoration: none !important;
+}
+
+.recommend-grid a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+
+
+/* Image wrapper to keep rounded shape */
+.img-wrapper {
+  width: 100%;
+  height: 180px;
+  border-radius: 22px 22px 0 0;
+  overflow: hidden; /* ONLY wrapper should clip */
+}
+
+/* Image */
+.experience-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Tag */
+.experience-tag {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: rgba(45, 45, 45, 0.85);
+  padding: 6px 14px;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 0.8rem;
+  z-index: 20; /* Stay above everything */
+}
+
+/* Actions */
+.experience-actions {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+/* TITLE */
+.experience-body h4 {
+  margin-top: 14px;
+  margin-bottom: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+/* LOCATION */
+.experience-location {
+  margin: 4px 0;
+  font-size: 0.82rem;
+  color: #444;
+  display: flex;
+  align-items: center;
+  margin-left: 7px;
+  text-decoration: none;
+}
+
+.experience-location i {
+  font-size: 0.85rem;
+  margin-right: 6px;
+  margin-left: 7px;
+  text-decoration: none;
+}
+
+/* RATING */
+.experience-rating {
+  margin: 6px 0;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  margin-left: 7px;
+  text-decoration: none;
+}
+
+.experience-rating i {
+  color: #ffbf00;
+  margin-right: 5px;
+  margin-left: 7px;
+  text-decoration: none;
+}
+
+/* ============================= */
+/* CARD ACTIONS */
+/* ============================= */
+.experience-actions {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.experience-card {
+    display: block;
+}
+
+.icon-btn {
+  height: 30px;
+  width: 30px;
+  border-radius: 30%;
+  border: 1.5px solid #f5f5f5;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+.icon-btn i {
+  font-size: 0.95rem;
+  color: #999;
+}
+.icon-btn.active {
+  background: #fff;
+  border-color: #f5f5f5;
+}
+
+.icon-btn:hover {
+  background: #fdfbfb;
+  border-color: #de2d2d;
+  transform: scale(1.05);
+}
+
+/* LIKE button when active */
+.like-btn.active i {
+    color: #ff4d4d !important;   /* bright red */
+}
+
+/* SAVE button when active */
+.save-btn.active i {
+    color: #1e90ff !important;   /* blue */
+}
+
+/* =========================================================
+   3-COLUMN MIDDLE GRID (Bucket | Saved | Liked)
+========================================================= */
+.middle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* Make all 3 cards equal height */
+.middle-grid > * {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   BUCKET LIST FIXED + STAR TOGGLE
+========================================================= */
+
+.bucket-list {
+  max-height: 120px;
+  overflow-y: auto;
+  padding-right: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Scrollbar */
+.bucket-list::-webkit-scrollbar {
+  width: 6px;
+}
+.bucket-list::-webkit-scrollbar-thumb {
+  background: #b5b5b5;
+  border-radius: 10px;
+}
+.bucket-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* One item */
+.bucket-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* STAR SHAPE (white when not done) */
+.bucket-star {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 2px solid #bbb;
+  background: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.bucket-star i {
+  font-size: 1.1rem;
+  color: #ddd; /* star default = pale */
+  transition: 0.25s ease;
+}
+
+/* COMPLETED = GOLD STAR */
+.bucket-star.done {
+  background: #ffeaa7;
+  border-color: #f6c700;
+  transform: scale(1.15);
+}
+
+.bucket-star.done i {
+  color: #ffbf00;
+}
+
+/* Cute POP animation */
+.bucket-star.pop {
+  animation: popStar 0.35s ease;
+}
+
+@keyframes popStar {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+/* Text */
+.bucket-item span a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.95rem;
+}
+.bucket-item span a:hover {
+  color: #ff831d;
+}
+
+/* =========================================================
+   SAVED / LIKED (Collage strips)
+========================================================= */
+.strip-card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+
+  height: 280px; /* you can adjust */
+  overflow: hidden; /* prevent overflow */
+}
+
+.strip-header h3 {
+  margin: 0 0 14px 0;
+}
+
+.collage-wrapper {
+  flex: 1; /* fill all remaining height */
+  min-height: 0; /* prevent collapsing */
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 10px;
+}
+
+.collage-left img,
+.collage-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* balanced crop */
+  border-radius: 16px;
+}
+.collage-left {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.collage-right {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* =========================================================
+   REVIEWS SECTION
+========================================================= */
+/* =============================== */
+/*       USER PAST REVIEWS         */
+/* =============================== */
+
+.past-reviews {
+  margin-top: 20px;
+}
+
+.review-list-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.review-item-card {
+  background: white;
+  padding: 18px 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease;
+}
+
+.review-item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.review-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-experience-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #043873;
+}
+
+.review-date {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.review-stars {
+  margin: 6px 0;
+  color: #ffc107;
+  font-size: 1rem;
+}
+
+.review-stars .rating-num {
+  font-weight: 600;
+  color: #555;
+  margin-left: 4px;
+}
+
+.review-text {
+  margin: 6px 0 12px;
+  color: #444;
+}
+
+.review-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.review-btn {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s;
+}
+
+.edit-btn {
+  background: #e5f0ff;
+  color: #043873;
+}
+
+.edit-btn:hover {
+  background: #d4e4ff;
+}
+
+.delete-btn {
+  background: #ffe5e5;
+  color: #c70000;
+}
+
+.delete-btn:hover {
+  background: #ffd1d1;
+}
+
+/* Edit mode styles */
+.review-edit .edit-stars i {
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #ccc;
+  margin-right: 5px;
+}
+
+.review-edit .edit-stars i.active {
+  color: #ffc107;
+}
+
+.edit-textarea {
+  width: 100%;
+  height: 90px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: none;
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   RESPONSIVE FIXES
+========================================================= */
+@media (max-width: 1100px) {
+  .recommend-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .middle-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 24px;
+  }
+  .hamburger {
+    display: block;
+  }
+
+  .nav-right {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    padding: 14px 20px;
+    display: none;
+    flex-direction: column;
+  }
+  .nav-right.active {
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-wrapper {
+    width: 94%;
+  }
+}
+
+/* ================================ */
+/*   CONFETTI ANIMATION             */
+/* ================================ */
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--confetti-color);
+  animation: confetti-fall 0.9s linear forwards;
+  pointer-events: none;
+  border-radius: 2px;
+  z-index: 1000;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(40px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ================================ */
+/*   ACHIEVEMENT POPUP              */
+/* ================================ */
+.achievement-popup {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: white;
+  padding: 14px 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.4s ease;
+  z-index: 2000;
+  pointer-events: auto;
+}
+
+.achievement-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.achievement-popup i {
+  color: #ffb300;
+  font-size: 1.4rem;
+}
+
+/* ================================ */
+/*   PROGRESS BAR                   */
+/* ================================ */
+.bucket-progress-container {
+  margin-bottom: 10px;
+  background: #eaeaea;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bucket-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #ffc931;
+  transition: width 0.4s ease;
+}
+
+/* UNIVERSAL HOVER ELEVATION */
+.hover-elevate {
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.hover-elevate:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}

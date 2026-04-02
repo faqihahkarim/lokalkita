@@ -1,0 +1,381 @@
+@font-face {
+    font-family: 'Bukhari';
+    src: url('font/Bukhari\ Script.ttf') format('opentype');
+    font-weight: normal;
+}
+
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fffdfa;
+    background-image: radial-gradient(#e7e2d9 1px, transparent 1px);
+    background-size: 16px 16px;
+}
+
+/* Top Nav */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    font-size: 1.2rem;
+}
+
+.glass-header {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.35);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+
+.logo {
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.back-link {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Layout Wrapper */
+.memory-container {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    padding: 30px 50px;
+    gap: 40px;
+}
+
+/* LEFT – IMAGES */
+
+
+.memory-left .title {
+    
+    font-size: 2.6rem;
+    color: #6b3f27;
+}
+
+
+.subtitle {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+
+/* POLAROID GRID */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 20px;
+    padding: 15px;
+}
+
+/* Polaroid style box */
+.polaroid {
+    background: #fffef8;
+    padding: 10px 10px 25px;
+    border-radius: 8px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid #eee5d2;
+    background-image: url('../pic/torn-paper-texture.png'); /* optional */
+    background-size: cover;
+}
+
+/* Hover tilt */
+.polaroid:hover {
+    transform: rotate(-2deg) scale(1.04);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Preview image */
+.preview-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: none;
+}
+
+/* Placeholder text */
+.placeholder {
+    display: block;
+    margin-top: 40px;
+    text-align: center;
+    color: #9b7a5b;
+    opacity: 0.7;
+    font-style: italic;
+    font-size: 0.85rem;
+}
+
+/* Polaroid caption container */
+.polaroid-caption {
+    margin-top: 8px;
+    text-align: center;
+}
+
+/* Caption input as handwriting */
+.caption-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px dashed #cba87b;
+    background: transparent;
+    font-size: 0.9rem;
+    text-align: center;
+    font-family: 'Patrick Hand', 'Comic Neue', cursive;
+    color: #5a4636;
+    outline: none;
+    padding: 4px 2px;
+}
+
+/* Delete button top-left */
+.delete-btn {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background: rgba(0,0,0,0.55);
+    color: white;
+    border: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Show delete button only when card has image (we handle in JS) */
+.img-box.has-image .delete-btn {
+    display: flex;
+}
+
+/* DRAGGING EFFECT */
+.img-box.dragging {
+    opacity: 0.4;
+    border: 2px dashed #c69f76;
+}
+
+/* Handwritten animation for textarea & captions */
+.handwriting-anim,
+.caption-input {
+    animation: handwritingFade 0.8s ease-out;
+}
+
+@keyframes handwritingFade {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
+
+/* DRAGGING EFFECT */
+.img-box.dragging {
+    opacity: 0.4;
+    border: 2px dashed #c69f76;
+}
+
+
+/* RIGHT – FORM */
+.memory-right {
+    background: #fffefa;
+    padding: 25px;
+    border-radius: 16px;
+    border: 2px dashed #d2b48c;
+}
+
+.form-label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+.date-box {
+    display: flex;
+    align-items: center;
+    background: #fff193;
+    padding: 10px;
+    border-radius: 20px;
+    color: rgb(117, 77, 7);
+}
+
+.date-box input {
+    width: 100%;
+    margin-left: 10px;
+    background: transparent;
+    border: none;
+    color: rgb(117, 77, 7);
+    font-size: 1rem;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.emotion-row {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.emotion-img {
+    width: 55px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    opacity: 0.7;
+}
+
+.emotion-img.selected {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.thought-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.thought-box {
+    height: 350px;
+    width: 100%;
+    padding: 5px;
+    border-radius: 12px;
+    border: 1px solid #d6c0a5;
+    background: repeating-linear-gradient(
+        to bottom,
+        #fffdf8 0px,
+        #fffdf8 28px,
+        #eee2d0 29px
+    ); /* notebook lines */
+    font-family: 'Patrick Hand', 'Comic Neue', cursive;
+    font-size: 1rem;
+    resize: none;
+}
+
+.sticker img {
+    width: 90px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+
+.save-btn {
+    margin-top: 20px;
+    padding: 10px 18px;
+    background: #8b4f2e;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    float: right;
+}
+.save-btn:hover {
+    background: #a15c39;
+}
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.loader {
+    width: 45px;
+    height: 45px;
+    border: 5px solid #b77a4b;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+.img-box {
+    position: relative;
+}
+
+/* IMAGE AREA ONLY */
+.image-area {
+    position: relative;
+    height: 160px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* File input covers ONLY image area */
+.image-area .img-input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+/* Preview image */
+.preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+}
+
+/* Placeholder */
+.placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: #777;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Caption must be fully editable */
+.caption-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px dashed #cba87b;
+    background: transparent;
+    outline: none;
+    pointer-events: auto;
+}
+
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+/* Responsive */
+@media (max-width: 900px) {
+    .memory-container {
+        grid-template-columns: 1fr;
+    }
+}

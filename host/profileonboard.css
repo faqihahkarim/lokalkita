@@ -1,0 +1,325 @@
+/* =============================
+   FULL-PAGE ONBOARDING STYLE
+   (Independent from dashboard)
+============================= */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Background fullscreen */
+body {
+  background: url("../pic/dash.jpg") no-repeat center center/cover;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+  position: relative;
+}
+
+/* Blurred overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.15);
+  z-index: -1;
+}
+
+/* Center Card */
+.onboard-container {
+  background: #fff;
+  width: 90%;
+  max-width: 850px; /* wider for 2-column layout */
+  padding: 40px 45px;
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  animation: fadeInUp 0.5s ease;
+}
+
+/* Title */
+.onboard-container h2 {
+  font-size: 2rem;
+  text-align: center;
+  color: #2b6cb0;
+  margin-bottom: 8px;
+}
+
+.onboard-container p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* ===========================
+   FORM GRID LAYOUT
+=========================== */
+
+/* Phone (default): stacked layout */
+.onboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+/* Tablet / Desktop: 2-column layout */
+@media (min-width: 768px) {
+  .onboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Left column + Right column */
+    gap: 35px;
+    align-items: start;
+  }
+
+  .left-side,
+  .right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 20px;
+  }
+
+  /* About section spans both columns */
+  .about-section {
+    grid-column: span 2;
+  }
+
+  /* Buttons span both columns */
+  .form-actions {
+    grid-column: span 2;
+  }
+}
+
+/* Section title */
+.section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #444;
+  border-left: 4px solid #ff661f;
+  padding-left: 10px;
+  margin: 15px 0 8px;
+}
+
+/* Labels */
+.onboard-container label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Inputs */
+.onboard-container input,
+.onboard-container select,
+.onboard-container textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  background: #fafafa;
+  transition: 0.3s;
+}
+
+.onboard-container input:focus,
+.onboard-container select:focus,
+.onboard-container textarea:focus {
+  border-color: #ff661f;
+  box-shadow: 0 0 0 3px rgba(255, 102, 31, 0.15);
+  background: #fff;
+}
+
+/* Three-column grid (email/phone/state) */
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+@media (max-width: 768px) {
+  .three-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===========================
+   PROFILE PHOTO
+=========================== */
+
+/* Circle + Button Container (side-by-side layout) */
+.photo-block {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+
+/* Circle container */
+.profile-photo-wrapper {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #ff661f;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Image inside circle */
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+
+/* Upload button */
+.upload-btn {
+  background: #2b6cb0;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.upload-btn input {
+  display: none;
+}
+
+.upload-btn:hover {
+  background: #1f528a;
+}
+
+
+/* ===========================
+   BUTTONS
+=========================== */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-save {
+  background: #ff661f;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn-save:hover {
+  background: #dd5200;
+}
+
+.btn-skip {
+  background: #ddd;
+  padding: 12px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+.btn-skip:hover {
+  background: #bdbdbd;
+}
+
+/* Phone: Buttons stacked */
+@media (max-width: 768px) {
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-save,
+  .btn-skip {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*loading spinner*/
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Spinner */
+.spinner {
+    width: 55px;
+    height: 55px;
+    border: 6px solid #ddd;
+    border-top-color: #2b6cb0;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Success Popup */
+.success-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #2b6cb0;
+    color: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    animation: fadeIn 0.4s ease;
+    z-index: 10000;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}

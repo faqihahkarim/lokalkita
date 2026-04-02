@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  background: url('../pic/p1.png') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  position: relative; /* required for overlay */
+}
+
+/* Dark overlay 
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.55); /* black with 55% opacity 
+  z-index: 0; /* sits behind other content 
+}
+
+/* Make sure page content is above overlay 
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+/* Header Styling */
+.header {
+    width: 100%; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: none;
+    z-index: 10; 
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    width: 100%;
+}
+
+nav .brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #3e4245;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav .brand:hover {
+  color: #ff661f;
+}
+
+
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #3e4245;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 10px;
+    
+}
+
+nav ul li a:hover {
+    color: #ff661f;
+}
+
+/* Main Content Styling */
+main {
+    margin-top: 80px; /*avoid header overlap*/
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Login Form */
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 900px;
+
+  background: rgba(255, 255, 255, 0.15); /* transparent white */
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);  /* blur behind container */
+  -webkit-backdrop-filter: blur(12px); /* for Safari */
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  padding: 40px;
+}
+
+
+.left, .right {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left {
+    background-image: url('../pic/p1.png');
+    background-color: rgba(213, 222, 227, 0.737); /* Yellow overlay */
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    border-radius: 20px  20px;
+}
+
+.left h1 {
+    color: #0d1448;
+    margin-bottom: 20px;
+    font-size: 35px;
+    
+    
+}
+
+.left button {
+    padding: 10px 20px;
+    background-color: #b7e2f3;
+    color: #0d2fa9;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 150px;
+    margin: 0 auto;
+    border: 2px solid #f1a9bf;
+}
+
+.left button:hover {
+    background-color: #faef87;
+}
+
+.right {
+    background-color: none;
+    display: flex; 
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
+    justify-content: center;
+}
+
+.right h1 {
+    color: #3c3d41;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 30px;
+    overflow: hidden; 
+    white-space: nowrap;
+    border-right: 3px solid #f685b0;
+    width: 0; 
+    animation: typewriter 4s steps(30, end) forwards, blink 0.5s step-end infinite;
+}
+
+/* Typewriter animation */
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%; /* full text lepas animate */
+    }
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+    from {
+        border-color: transparent;
+    }
+    to {
+        border-color: #f685b0;
+    }
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #f6efef;
+}
+
+.form-group input {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid #f5eeee;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #aecdf4;
+    margin-bottom:15px;
+}
+
+.right button {
+    padding: 10px 20px;
+    background-color: #fbffbe;
+    border: 2px solid #004aad;
+    color: rgb(225, 126, 167);
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 150px;
+    margin: 20px 0; 
+    margin-left:30px;
+   
+}
+
+.right button:hover {
+    background-color: #ff9114;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: row;
+        gap: 10px;
+        
+    }
+
+    nav ul li a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .container {
+        flex-direction: column;
+        width: 90%;
+        margin-top:30px;
+    }
+
+    .left, .right {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .left h1, .right h1 {
+        font-size: 1.5em;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}
