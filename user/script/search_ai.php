@@ -33,7 +33,7 @@ $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
 // DEBUG: If you are still stuck, uncomment the line below to see the error in the console
-// die(json_encode(["debug_code" => $httpCode, "debug_resp" => $response]));
+die(json_encode(["debug_code" => $httpCode, "debug_resp" => $response]));
 
 $modelResults = json_decode($response, true);
 
