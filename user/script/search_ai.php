@@ -8,18 +8,25 @@ if (!$query) {
 }
 
 /* 1️⃣ Call Python API */
-
 $apiUrl = "https://layshuen-lokalkita-ai.hf.space/search?query=" . urlencode($query);
 
-// Create a stream context to avoid "403 Forbidden" errors from Hugging Face
+// Use this to bypass the "403 Forbidden" or "Blocked" error
 $options = [
     "http" => [
-        "header" => "User-Agent: PHP\r\n"
+        "header" => "User-Agent: PHP\r\n",
+        "ignore_errors" => true // Let us see the error instead of crashing
     ]
 ];
 $context = stream_context_create($options);
 
 $response = file_get_contents($apiUrl, false, $context);
+
+if ($response === false) {
+    // This will help us see if the server failed to connect
+    echo json_encode(["error" => "Failed to connect to AI server"]);
+    exit;
+}
+
 $modelResults = json_decode($response, true);
 
 /* 2️⃣ MAP EXxxx → exp_id */
