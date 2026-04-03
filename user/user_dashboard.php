@@ -89,8 +89,7 @@ $stmt->close();
 $recommended = [];
 $recommendedIds = [];
 
-$apiUrl = "https://lokalkita-ai-github-io.onrender.com/recommend/personalized"; 
-
+$apiUrl = "https://layshuen-lokalkita-ai.hf.space/recommend/personalized" . $user_id . ...
 $query = http_build_query([
     "user_id"   => $user_id,
     "liked"     => $likedIds,
@@ -100,6 +99,17 @@ $query = http_build_query([
 
 // This builds the full URL with the user data attached
 $fullUrl = $apiUrl . "?" . $query;
+
+/* 2️⃣ Call via cURL (The Live Web Way) */
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $fullUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
+$response = curl_exec($ch);
+curl_close($ch);
+
+$recommendations = json_decode($response, true);
 
 // Fetch the data from Render
 $response = file_get_contents($fullUrl);
