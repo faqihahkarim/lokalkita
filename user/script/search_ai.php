@@ -8,8 +8,18 @@ if (!$query) {
 }
 
 /* 1️⃣ Call Python API */
-$apiUrl = "http://127.0.0.1:8000/search?query=" . urlencode($query);
-$response = file_get_contents($apiUrl);
+
+$apiUrl = "https://layshuen-lokalkita-ai.hf.space/search?query=" . urlencode($query);
+
+// Create a stream context to avoid "403 Forbidden" errors from Hugging Face
+$options = [
+    "http" => [
+        "header" => "User-Agent: PHP\r\n"
+    ]
+];
+$context = stream_context_create($options);
+
+$response = file_get_contents($apiUrl, false, $context);
 $modelResults = json_decode($response, true);
 
 /* 2️⃣ MAP EXxxx → exp_id */
