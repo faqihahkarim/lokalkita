@@ -7,29 +7,33 @@ if (!$query) {
     exit;
 }
 
-/* 1️⃣ Call Python API using cURL */
+/* 1️⃣ Call Python API using Heavy Duty cURL */
 $apiUrl = "https://layshuen-lokalkita-ai.hf.space/search?query=" . urlencode($query);
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $apiUrl);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)');
-curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+curl_setopt($ch, CURLOPT_TIMEOUT, 15); // Give it more time to "think"
 
-// These 2 lines are crucial for free hosting SSL issues
+// Headers to make it look like a real browser request
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+    "Accept: application/json",
+    "Referer: https://layshuen-lokalkita-ai.hf.space/",
+    "Expect:" // Fixes "Empty reply from server" issues on some hosts
+]);
+
+// Bypass SSL issues common on free hosting
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 
 $response = curl_exec($ch);
-
-// Check for cURL errors
-if (curl_errno($ch)) {
-    $error_msg = curl_error($ch);
-    // Log the error to see what's happening
-    error_log("cURL Error: " . $error_msg);
-}
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
+
+// DEBUG: If you are still stuck, uncomment the line below to see the error in the console
+// die(json_encode(["debug_code" => $httpCode, "debug_resp" => $response]));
 
 $modelResults = json_decode($response, true);
 
