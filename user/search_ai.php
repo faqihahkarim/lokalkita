@@ -1,73 +1,42 @@
 <?php
-require 'script/db.php';
-
+// user/search_ai.php
 header('Content-Type: application/json');
+require 'db.php';
 
 $query = $_GET['q'] ?? '';
-$query = trim($query);
+if (!$query) { echo json_encode([]); exit; }
 
-if (strlen($query) < 3) {
-    echo json_encode([]);
-    exit;
-}
+/* 1️⃣ Call Python API (The Tunnel) */
+$apiUrl = "https://layshuen-lokalkita-ai.hf.space/search?query=" . urlencode($query);
 
-/* 1️⃣ Call Python API */
-$apiUrl = "http://127.0.0.1:8000/search?query=" . urlencode($query);
-$response = @file_get_contents($apiUrl);
-
-if ($response === FALSE) {
-    echo json_encode([]);
-    exit;
-}
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $apiUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Fixes SSL blocks
+$response = curl_exec($ch);
+curl_close($ch);
 
 $modelResults = json_decode($response, true);
 
-/* 2️⃣ Map EXxxx → exp_id */
+/* 2️⃣ Map results to Database IDs */
 $expIds = [];
-
-foreach ($modelResults as $row) {
-    if (!isset($row['item_id'])) continue;
-
-    $expIds[] = intval(str_replace("EX", "", $row['item_id']));
+if ($modelResults) {
+    foreach ($modelResults as $row) {
+        $expIds[] = intval(str_replace("EX", "", $row['item_id']));
+    }
 }
 
-if (empty($expIds)) {
-    echo json_encode([]);
-    exit;
-}
+if (empty($expIds)) { echo json_encode([]); exit; }
 
-/* 3️⃣ Query DB ikut ranking model */
+/* 3️⃣ Query your MySQL Database */
 $idList = implode(',', $expIds);
-
-$sql = "
-SELECT 
-    e.exp_id, e.exp_title, e.state, e.category,
-    e.min_price, e.max_price,
-    COALESCE(e.rating,0) AS rating,
-    (
-      SELECT img_path 
-      FROM experience_images 
-      WHERE exp_id = e.exp_id 
-      ORDER BY seq_no ASC 
-      LIMIT 1
-    ) AS img
-FROM experience e
-WHERE e.exp_id IN ($idList)
-ORDER BY FIELD(e.exp_id, $idList)
-
-";
+$sql = "SELECT exp_id, exp_title, state, category, min_price, max_price, rating 
+        FROM experience WHERE exp_id IN ($idList) 
+        ORDER BY FIELD(exp_id, $idList)";
 
 $result = $conn->query($sql);
-
 $data = [];
-while ($row = $result->fetch_assoc()) {
-    if ($row['img']) {
-        $row['img'] = "../host/uploads/experience/" . $row['img'];
-    } else {
-        $row['img'] = "pic/default_exp.png";
-    }
-    $data[] = $row;
-}
-
+while ($row = $result->fetch_assoc()) { $data[] = $row; }
 
 echo json_encode($data);
