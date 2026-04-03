@@ -89,7 +89,7 @@ $stmt->close();
 $recommended = [];
 $recommendedIds = [];
 
-$apiUrl = "https://layshuen-lokalkita-ai.hf.space/recommend/personalized" . $user_id . ...
+$apiUrl = "https://layshuen-lokalkita-ai.hf.space/recommend/personalized" . $user_id ;
 $query = http_build_query([
     "user_id"   => $user_id,
     "liked"     => $likedIds,
