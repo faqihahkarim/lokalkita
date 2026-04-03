@@ -7,25 +7,29 @@ if (!$query) {
     exit;
 }
 
-/* 1️⃣ Call Python API */
+/* 1️⃣ Call Python API using cURL */
 $apiUrl = "https://layshuen-lokalkita-ai.hf.space/search?query=" . urlencode($query);
 
-// Use this to bypass the "403 Forbidden" or "Blocked" error
-$options = [
-    "http" => [
-        "header" => "User-Agent: PHP\r\n",
-        "ignore_errors" => true // Let us see the error instead of crashing
-    ]
-];
-$context = stream_context_create($options);
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $apiUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)');
+curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 
-$response = file_get_contents($apiUrl, false, $context);
+// These 2 lines are crucial for free hosting SSL issues
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 
-if ($response === false) {
-    // This will help us see if the server failed to connect
-    echo json_encode(["error" => "Failed to connect to AI server"]);
-    exit;
+$response = curl_exec($ch);
+
+// Check for cURL errors
+if (curl_errno($ch)) {
+    $error_msg = curl_error($ch);
+    // Log the error to see what's happening
+    error_log("cURL Error: " . $error_msg);
 }
+curl_close($ch);
 
 $modelResults = json_decode($response, true);
 
