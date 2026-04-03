@@ -164,7 +164,7 @@ $total_reviews = $avg_data['total_reviews'] ?? 0;
   <section id="popular">
   <h3>Our Experiences</h3>
 
-  <!-- FILTER BAR SAME AS YOUR VERSION -->
+  <!-- FILTER BAR -->
   <div class="toolbar">
     <input id="searchInput" type="text" placeholder="Search experiences…">
     <select id="stateSelect">
@@ -371,17 +371,28 @@ searchInput.addEventListener("input", () => {
   }
 
   // AI MODE
-  aiMode = true;
-  toggleFilters(true);
-  aiHint.style.display = "block";    // show AI hint
+aiMode = true;
+toggleFilters(true);
+aiHint.style.display = "block";
 
-  aiSearchTimeout = setTimeout(() => {
-    fetch("search_ai.php?q=" + encodeURIComponent(q))
+// Add this line to stop the "flicker"
+if (aiSearchTimeout) clearTimeout(aiSearchTimeout); 
+
+aiSearchTimeout = setTimeout(() => {
+    // Note: Make sure the path is correct (e.g., "user/search_ai.php" if this JS is in the root)
+    fetch("user/search_ai.php?q=" + encodeURIComponent(q)) 
       .then(res => res.json())
       .then(data => {
-        renderAIResults(data);
-      });
-  }, 500);
+          // Add a simple check to ensure data exists
+          if (data && !data.error) {
+              renderAIResults(data);
+          } else {
+              console.error("AI Error:", data.error);
+              // Handle "No results" here if you like
+          }
+      })
+      .catch(err => console.error("Fetch error:", err));
+}, 500);
 });
 
 
