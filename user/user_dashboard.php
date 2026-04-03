@@ -86,10 +86,16 @@ $stmt->close();
 // 4. ML PERSONALIZED RECOMMENDATION (ONLY SOURCE)
 // ==================================================
 
+// ==================================================
+// 4. ML PERSONALIZED RECOMMENDATION (ONLY SOURCE)
+// ==================================================
+
 $recommended = [];
 $recommendedIds = [];
 
-$apiUrl = "https://layshuen-lokalkita-ai.hf.space/recommend/personalized" . $user_id ;
+// FIXED: Removed the .$user_id from the end of the URL string
+$apiUrl = "https://layshuen-lokalkita-ai.hf.space/recommend/personalized";
+
 $query = http_build_query([
     "user_id"   => $user_id,
     "liked"     => $likedIds,
@@ -97,31 +103,30 @@ $query = http_build_query([
     "interests" => $interestNames
 ]);
 
-// This builds the full URL with the user data attached
 $fullUrl = $apiUrl . "?" . $query;
 
-/* 2️⃣ Call via cURL (The Live Web Way) */
+/* 1️⃣ Call via cURL (The ONLY way that works on InfinityFree) */
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $fullUrl);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
+curl_setopt($ch, CURLOPT_TIMEOUT, 20); // Give it time to think
+
 $response = curl_exec($ch);
 curl_close($ch);
 
-$recommendations = json_decode($response, true);
+// Use the $response from cURL
+$apiData = json_decode($response, true);
 
-// Fetch the data from Render
-$response = file_get_contents($fullUrl);
-
-$apiResponse = file_get_contents("$apiUrl?$query");
-
-$apiData = json_decode($apiResponse, true);
-
+/* 2️⃣ Process the IDs */
 if (is_array($apiData)) {
     foreach ($apiData as $row) {
         if (!empty($row['item_id'])) {
-            $recommendedIds[] = (int)$row['item_id'];
+            // Mapping EX123 to 123
+            $id = (int)str_replace("EX", "", $row['item_id']);
+            $recommendedIds[] = $id;
         }
     }
 }
